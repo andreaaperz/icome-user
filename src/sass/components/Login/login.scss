@@ -1,0 +1,60 @@
+
+.login-background {
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(249, 217, 70, 1) 100%);
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(40px, auto);
+}
+
+img {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+    height: 15rem;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+text {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: -90px;
+    grid-column: 2;
+}
+
+.subtitle {
+    font-size: 13px;
+    font-weight: 200;
+    grid-column: 2;
+}
+
+
+button {
+    margin-top: 1.5rem;
+    grid-column: 2;
+    background-color: #000;
+    border: none;
+    color: white;
+    height: 2.5rem;
+    width: 20rem;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+}
+  
+input {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    width: 20rem;
+    font-size: 0.8rem;
+    grid-column: 2;
+    padding: 1rem 1rem;
+    border: none;
+    display: block;
+  }
