@@ -1,13 +1,21 @@
-import React from 'react';
-import Login from './Login/Login';
+import React from "react";
+import Login from "../pages/Login/Login.page";
+import Home from "../pages/Home/Home.page";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 function App(): JSX.Element {
-    return (
-        <div>
-            <Login/>
-        </div>
-    );
-
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route exact path="/home">
+          <Home />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
