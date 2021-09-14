@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import fire from "../../environments/environments";
 import Cookies from "universal-cookie";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import logoutImg from "../../assets/logout.png";
+
 
 const cookies = new Cookies();
 
 function Home(): JSX.Element {
+  
   const logout = (e: any) => {
     e.preventDefault();
 
@@ -29,8 +34,21 @@ function Home(): JSX.Element {
 
   return (
     <div>
-      <h1>hola</h1>
-      <button onClick={logout}>LogOut</button>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+        <img
+              alt=""
+              src= {logoutImg}
+              width="27px"
+              height="27px"
+              className="d-inline-block align-top "
+              onClick={logout}
+            />
+          <Navbar.Brand  className="mx-auto">
+           Mis Folios
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
     </div>
   );
 }

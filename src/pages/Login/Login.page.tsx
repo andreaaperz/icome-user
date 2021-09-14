@@ -28,7 +28,6 @@ function Login(): JSX.Element {
         console.log("Succeed");
         cookies.set("email", email, { path: "/" });
         cookies.set("password", password, { path: "/" });
-        alert(`Bienvenido ${email}`);
       })
       .then(() => {
         window.location.href = "./home";
