@@ -2,10 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 @import './components/Login/login.scss';
 @import './components/Home/home.scss';
+@import './components/FoilCard/foilCard.scss';

@@ -4,12 +4,11 @@ import Cookies from "universal-cookie";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import logoutImg from "../../assets/logout.png";
-
+import FoilCard from "../../components/FoilCard.tsx/FoilCard";
 
 const cookies = new Cookies();
 
 function Home(): JSX.Element {
-  
   const logout = (e: any) => {
     e.preventDefault();
 
@@ -36,19 +35,22 @@ function Home(): JSX.Element {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-        <img
-              alt=""
-              src= {logoutImg}
-              width="27px"
-              height="27px"
-              className="d-inline-block align-top "
-              onClick={logout}
-            />
-          <Navbar.Brand  className="mx-auto">
-           Mis Folios
-          </Navbar.Brand>
+          <img
+            alt=""
+            src={logoutImg}
+            width="27px"
+            height="27px"
+            className="d-inline-block align-top "
+            onClick={logout}
+          />
+          <Navbar.Brand className="mx-auto">Mis Folios</Navbar.Brand>
         </Container>
       </Navbar>
+      <div className="grid">
+        <div className="foils">
+          <FoilCard />
+        </div>
+      </div>
     </div>
   );
 }
