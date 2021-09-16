@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import fire from "../../environments/environments";
+import { useEffect, useState } from "react";
+import { auth, db } from "../../environments/environments";
 import Cookies from "universal-cookie";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -8,12 +8,18 @@ import FoilCard from "../../components/FoilCard.tsx/FoilCard";
 
 const cookies = new Cookies();
 
+interface arrayI {
+  folio: any;
+  email: any;
+}
+
 function Home(): JSX.Element {
+  const [list, setList] = useState<arrayI[]>();
+
   const logout = (e: any) => {
     e.preventDefault();
 
-    fire
-      .auth()
+    auth
       .signOut()
       .then(() => {
         cookies.remove("email", { path: "/" });
@@ -29,6 +35,28 @@ function Home(): JSX.Element {
     if (!cookies.get("email")) {
       window.location.href = "./";
     }
+
+    setList([]);
+    const itemsArray: {
+      folio: string;
+      email: string;
+    }[] = [];
+
+    db.collection("folios")
+      .where("correo", "==", cookies.get("email"))
+      .onSnapshot((snapshot) => {
+        var changes = snapshot.docChanges();
+        changes.forEach((change) => {
+          if (change.type == "added") {
+            itemsArray.push({
+              folio: change.doc.data().folio,
+              email: change.doc.data().correo,
+            });
+          }
+          console.log(itemsArray);
+        });
+        setList(itemsArray);
+      });
   }, []);
 
   return (
@@ -37,6 +65,7 @@ function Home(): JSX.Element {
         <Container>
           <img
             alt=""
+            id="logout"
             src={logoutImg}
             width="27px"
             height="27px"
@@ -48,7 +77,11 @@ function Home(): JSX.Element {
       </Navbar>
       <div className="grid">
         <div className="foils">
-          <FoilCard />
+          {list
+            ? list.map((item, index) => (
+                <FoilCard key={index} foil={item.folio} email={item.email} />
+              ))
+            : "Cargando..."}
         </div>
       </div>
     </div>

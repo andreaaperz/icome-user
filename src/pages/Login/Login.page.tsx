@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/logo.png";
-import fire from "../../environments/environments";
+import { auth } from "../../environments/environments";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -21,8 +21,7 @@ function Login(): JSX.Element {
   const login = (e: any) => {
     e.preventDefault();
 
-    fire
-      .auth()
+    auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log("Succeed");
