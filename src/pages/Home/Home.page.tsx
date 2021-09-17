@@ -53,11 +53,14 @@ function Home(): JSX.Element {
               email: change.doc.data().correo,
             });
           }
-          console.log(itemsArray);
         });
         setList(itemsArray);
       });
   }, []);
+
+  let goDetail = (foil: any) => {
+    window.location.href = `./detail?${"id=" + foil}`;
+  };
 
   return (
     <div>
@@ -79,7 +82,12 @@ function Home(): JSX.Element {
         <div className="foils">
           {list
             ? list.map((item, index) => (
-                <FoilCard key={index} foil={item.folio} email={item.email} />
+                <FoilCard
+                  key={index}
+                  foil={item.folio}
+                  email={item.email}
+                  onClick={() => goDetail(item.folio)}
+                />
               ))
             : "Cargando..."}
         </div>
