@@ -7,12 +7,12 @@ import Detail from "../pages/Detail/Detail.page";
 
 function App(): JSX.Element {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/home">
+        <Route path="/home">
           <Home />
         </Route>
         <Link to="/detail?id=:foil">

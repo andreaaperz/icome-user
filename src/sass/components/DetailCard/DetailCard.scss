@@ -1,0 +1,41 @@
+.CardDetailContainer {
+  display: grid;
+  grid-gap: 0.2rem;
+
+  padding: 0.5rem 0.9rem;
+  width: 100%;
+  max-width: 35rem;
+  margin-left: 50px;
+  margin: 1.2rem auto;
+
+  .NoImage {
+    margin: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .DetailTitle {
+    text-align: center;
+    border-radius: 0.2rem;
+    background-color: orange;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    color: black;
+    font-size: large;
+  }
+
+  .Download {
+    margin-top: 0.5rem;
+    text-align: center;
+    border-color: pink;
+    border-radius: 0.2rem;
+    height: 2.5rem;
+  }
+
+  .base64Image{
+    margin: auto;
+    width: 100%;
+    height: auto;
+  }
+
+}
