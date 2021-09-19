@@ -1,23 +1,22 @@
 .Nombre {
-    margin-left: 5px;
+  margin-left: 5px;
+}
+
+.gridDetail {
+  display: grid;
+  grid-template-columns: auto 70% auto;
+  grid-gap: 0.8rem;
+  padding-bottom: 0.9rem;
+
+  $small: 90vh;
+
+  .foils {
+    grid-column: 2;
+    height: 90vh;
+    margin-top: 1rem;
+    overflow-y: scroll;
+    scrollbar-color: rgb(170, 170, 170) rgb(224, 224, 224);
+    scrollbar-width: thin;
   }
-  
-  .gridDetail {
-    display: grid;
-    grid-template-columns: auto 70% auto;
-    grid-gap: 0.8rem;
-    padding-bottom: 0.9rem;
-  
-    $small: 90vh;
-  
-    .foils {
-      grid-column: 2;
-      height: 90vh;
-      margin-top: 1rem;
-      overflow-y: scroll;
-      scrollbar-color: rgb(170, 170, 170) rgb(224, 224, 224);
-      scrollbar-width: thin;
-    }
-  }
-  
-  
+}
+

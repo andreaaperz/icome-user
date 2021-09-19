@@ -15,9 +15,9 @@ function App(): JSX.Element {
         <Route path="/home">
           <Home />
         </Route>
-        <Link to="/detail?id=:foil">
+        <Route path="/detail/:id">
           <Detail />
-        </Link>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

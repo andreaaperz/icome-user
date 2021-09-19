@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import logoutImg from "../../assets/logout.png";
 import FoilCard from "../../components/FoilCard.tsx/FoilCard";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const cookies = new Cookies();
 
@@ -59,7 +60,7 @@ function Home(): JSX.Element {
   }, []);
 
   let goDetail = (foil: any) => {
-    window.location.href = `./detail?${"id=" + foil}`;
+    window.location.href = `./detail/${foil}`;
   };
 
   return (
@@ -80,16 +81,18 @@ function Home(): JSX.Element {
       </Navbar>
       <div className="grid">
         <div className="foils">
-          {list
-            ? list.map((item, index) => (
-                <FoilCard
-                  key={index}
-                  foil={item.folio}
-                  email={item.email}
-                  onClick={() => goDetail(item.folio)}
-                />
-              ))
-            : "Cargando..."}
+          {list ? (
+            list.map((item, index) => (
+              <FoilCard
+                key={index}
+                foil={item.folio}
+                email={item.email}
+                onClick={() => goDetail(item.folio)}
+              />
+            ))
+          ) : (
+            <LoadingSpinner />
+          )}
         </div>
       </div>
     </div>
