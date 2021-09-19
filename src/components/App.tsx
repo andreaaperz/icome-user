@@ -12,10 +12,10 @@ function App(): JSX.Element {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route path="/home">
+        <Route exact path="/home">
           <Home />
         </Route>
-        <Route path="/detail/:id">
+        <Route exact path="/detail/:id">
           <Detail />
         </Route>
       </Switch>
