@@ -57,7 +57,7 @@ function Login(): JSX.Element {
           setWarning(messageError(error.code));
         });
     } else {
-      setWarning(messageError("No tienes permisos para entrar"));
+      setWarning("No tienes permisos para entrar");
     }
   };
 
