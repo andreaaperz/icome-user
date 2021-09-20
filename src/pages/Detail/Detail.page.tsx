@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-
 import { db } from "../../environments/environments";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
