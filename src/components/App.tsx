@@ -13,7 +13,7 @@ import Detail from "../pages/Detail/Detail.page";
 
 function App(): JSX.Element {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/">
           <Login />
@@ -25,7 +25,7 @@ function App(): JSX.Element {
           <Detail />
         </Route>
       </Switch>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

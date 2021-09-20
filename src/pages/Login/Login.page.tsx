@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/logo.png";
-import { auth } from "../../environments/environments";
+import { auth, db } from "../../environments/environments";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -18,23 +18,47 @@ function Login(): JSX.Element {
     setWarning("");
   };
 
-  const login = (e: any) => {
+  const validation = async () => {
+    var canLogIn = false;
+    await db
+      .collection("empleados")
+      .where("correo", "==", email)
+      .get()
+      .then((response) => {
+        response.forEach((doc) => {
+          if (doc.data().entra) {
+            canLogIn = true;
+          } else {
+            canLogIn = false;
+          }
+        });
+      });
+    return canLogIn;
+  };
+
+  const login = async (e: any) => {
     e.preventDefault();
 
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log("Succeed");
-        cookies.set("email", email, { path: "/" });
-        cookies.set("password", password, { path: "/" });
-      })
-      .then(() => {
-        window.location.href = "./home";
-      })
-      .catch(function (error) {
-        console.log(error);
-        setWarning(messageError(error.code));
-      });
+    let canEnter = await validation();
+
+    if (canEnter) {
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log("Succeed");
+          cookies.set("email", email, { path: "/" });
+          cookies.set("password", password, { path: "/" });
+        })
+        .then(() => {
+          window.location.href = "./home";
+        })
+        .catch(function (error) {
+          console.log(error);
+          setWarning(messageError(error.code));
+        });
+    } else {
+      setWarning(messageError("No tienes permisos para entrar"));
+    }
   };
 
   function messageError(code: any) {
