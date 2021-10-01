@@ -1,13 +1,10 @@
 import React from "react";
 import Login from "../pages/Login/Login.page";
 import Home from "../pages/Home/Home.page";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Detail from "../pages/Detail/Detail.page";
+import Foils from "../pages/Foils/Foils.page";
 
 function App(): JSX.Element {
   return (
@@ -18,6 +15,9 @@ function App(): JSX.Element {
         </Route>
         <Route path="/home">
           <Home />
+        </Route>
+        <Route path="/foils/:id">
+          <Foils />
         </Route>
         <Route path="/detail/:id">
           <Detail />

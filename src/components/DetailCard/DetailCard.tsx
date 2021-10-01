@@ -1,18 +1,18 @@
 import React from "react";
 import NoImg from "../../assets/noImg.png";
 
-interface DetailCard {
+interface DetailCardProps {
   image?: string;
   title: string;
   color?: string;
 }
 
-function DetailCard(props: DetailCard): JSX.Element {
+function DetailCard(props: DetailCardProps): JSX.Element {
   if (props.image) {
     return (
       <div className="CardDetailContainer">
         <div className="DetailTitle" style={{ backgroundColor: props.color }}>{props.title}</div>
-        {props.image != "null" ? (
+        {props.image !== "null" ? (
           <div>
             <img
               alt=""

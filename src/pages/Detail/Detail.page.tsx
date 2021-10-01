@@ -60,7 +60,7 @@ function Detail(): JSX.Element {
       .onSnapshot((snapshot) => {
         var changes = snapshot.docChanges();
         changes.forEach((change) => {
-          if (change.type == "added" && change.doc.data().folio == id) {
+          if (change.type === "added" && change.doc.data().folio === id) {
             itemsArray.push({
               card1: change.doc.data().carta,
               card2: change.doc.data().carta2,

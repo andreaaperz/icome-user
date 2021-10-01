@@ -4,14 +4,14 @@ import Cookies from "universal-cookie";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import logoutImg from "../../assets/logout.png";
-import FoilCard from "../../components/FoilCard.tsx/FoilCard";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import UserCard from "../../components/UserCard/UserCard";
 
 const cookies = new Cookies();
 
 interface arrayI {
-  folio: any;
-  email: any;
+  name: string;
+  email: string;
 }
 
 function Home(): JSX.Element {
@@ -39,27 +39,27 @@ function Home(): JSX.Element {
 
     setList([]);
     const itemsArray: {
-      folio: string;
+      name: string;
       email: string;
     }[] = [];
 
-    db.collection("folios")
-      .onSnapshot((snapshot) => {
-        var changes = snapshot.docChanges();
-        changes.forEach((change) => {
-          if (change.type == "added") {
-            itemsArray.push({
-              folio: change.doc.data().folio,
-              email: change.doc.data().correo,
-            });
-          }
-        });
-        setList(itemsArray);
+    db.collection("empleados").onSnapshot((snapshot) => {
+      var changes = snapshot.docChanges();
+      changes.forEach((change) => {
+        if (change.type === "added") {
+          itemsArray.push({
+            name: change.doc.data().nombre,
+            email: change.doc.data().correo,
+          });
+        }
       });
+      setList(itemsArray);
+      console.log(list);
+    });
   }, []);
 
-  let goDetail = (foil: any) => {
-    window.location.href = `./detail/${foil}`;
+  let goFoils = (name: any) => {
+    window.location.href = `./foils/${name}`;
   };
 
   return (
@@ -75,18 +75,17 @@ function Home(): JSX.Element {
             className="d-inline-block align-top "
             onClick={logout}
           />
-          <Navbar.Brand className="mx-auto">Mis Folios</Navbar.Brand>
+          <Navbar.Brand className="mx-auto">Empleados</Navbar.Brand>
         </Container>
       </Navbar>
       <div className="grid">
         <div className="foils">
           {list ? (
             list.map((item, index) => (
-              <FoilCard
+              <UserCard
                 key={index}
-                foil={item.folio}
-                email={item.email}
-                onClick={() => goDetail(item.folio)}
+                name={item.name}
+                onClick={() => goFoils(item.name)}
               />
             ))
           ) : (
