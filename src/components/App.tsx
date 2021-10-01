@@ -5,8 +5,6 @@ import {
   BrowserRouter,
   Switch,
   Route,
-  Link,
-  HashRouter,
 } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Detail from "../pages/Detail/Detail.page";
@@ -18,10 +16,10 @@ function App(): JSX.Element {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/home">
+        <Route path="/home">
           <Home />
         </Route>
-        <Route exact path="/detail/:id">
+        <Route path="/detail/:id">
           <Detail />
         </Route>
       </Switch>

@@ -6,7 +6,10 @@ import DetailCard from "../../components/DetailCard/DetailCard";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 interface arrayI {
-  card: any;
+  card1: any;
+  card2: any;
+  croquis: any;
+  materiales: any;
   imagen1: any;
   imagen2: any;
   imagen3: any;
@@ -19,6 +22,9 @@ interface arrayI {
   imagen10: any;
   imagen11: any;
   imagen12: any;
+  imagen13: any;
+  imagen14: any;
+  imagen15: any;
 }
 
 function Detail(): JSX.Element {
@@ -28,7 +34,10 @@ function Detail(): JSX.Element {
 
   useEffect(() => {
     const itemsArray: {
-      card: any;
+      card1: any;
+      card2: any;
+      croquis: any;
+      materiales: any;
       imagen1: any;
       imagen2: any;
       imagen3: any;
@@ -41,6 +50,9 @@ function Detail(): JSX.Element {
       imagen10: any;
       imagen11: any;
       imagen12: any;
+      imagen13: any;
+      imagen14: any;
+      imagen15: any;
     }[] = [];
 
     db.collection("folios")
@@ -50,7 +62,10 @@ function Detail(): JSX.Element {
         changes.forEach((change) => {
           if (change.type == "added" && change.doc.data().folio == id) {
             itemsArray.push({
-              card: change.doc.data().carta,
+              card1: change.doc.data().carta,
+              card2: change.doc.data().carta2,
+              croquis: change.doc.data().croquis,
+              materiales: change.doc.data().materiales,
               imagen1: change.doc.data().img1,
               imagen2: change.doc.data().img2,
               imagen3: change.doc.data().img3,
@@ -60,9 +75,12 @@ function Detail(): JSX.Element {
               imagen7: change.doc.data().img7,
               imagen8: change.doc.data().img8,
               imagen9: change.doc.data().img9,
-              imagen10: change.doc.data().img10,
-              imagen11: change.doc.data().img11,
-              imagen12: change.doc.data().img12,
+              imagen10: change.doc.data().img010,
+              imagen11: change.doc.data().img011,
+              imagen12: change.doc.data().img012,
+              imagen13: change.doc.data().img013,
+              imagen14: change.doc.data().img014,
+              imagen15: change.doc.data().img015,
             });
           }
           setList(itemsArray);
@@ -74,26 +92,108 @@ function Detail(): JSX.Element {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand className="mx-auto">Folio No. {id}</Navbar.Brand>
+          <Navbar.Brand className="mx-auto">Folio {id}</Navbar.Brand>
         </Container>
       </Navbar>
       <div className="gridDetail">
         <div className="foils">
           {list ? (
             <div>
-              <DetailCard image={list![0].card} title="Carta" />
-              <DetailCard image={list![0].imagen1} title="Evidencia 1" />
-              <DetailCard image={list![0].imagen2} title="Evidencia 2" />
-              <DetailCard image={list![0].imagen3} title="Evidencia 3" />
-              <DetailCard image={list![0].imagen4} title="Evidencia 4" />
-              <DetailCard image={list![0].imagen5} title="Evidencia 5" />
-              <DetailCard image={list![0].imagen6} title="Evidencia 6" />
-              <DetailCard image={list![0].imagen7} title="Evidencia 7" />
-              <DetailCard image={list![0].imagen8} title="Evidencia 8" />
-              <DetailCard image={list![0].imagen9} title="Evidencia 9" />
-              <DetailCard image={list![0].imagen10} title="Evidencia 10" />
-              <DetailCard image={list![0].imagen11} title="Evidencia 11" />
-              <DetailCard image={list![0].imagen12} title="Evidencia 12" />
+              <DetailCard
+                image={list[0].card1}
+                title="Carta 1"
+                color="#7dcea0"
+              />
+              <DetailCard
+                image={list[0].card2}
+                title="Carta 2"
+                color="#7dcea0"
+              />
+              <DetailCard
+                image={list[0].croquis}
+                title="Croquis"
+                color="#f1948a"
+              />
+              <DetailCard
+                image={list[0].materiales}
+                title="Materiales"
+                color="#85c1e9"
+              />
+              <DetailCard
+                image={list[0].imagen1}
+                title="Evidencia 1"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen2}
+                title="Evidencia 2"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen3}
+                title="Evidencia 3"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen4}
+                title="Evidencia 4"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen5}
+                title="Evidencia 5"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen6}
+                title="Evidencia 6"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen7}
+                title="Evidencia 7"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen8}
+                title="Evidencia 8"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen9}
+                title="Evidencia 9"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen10}
+                title="Evidencia 10"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen11}
+                title="Evidencia 11"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen12}
+                title="Evidencia 12"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen13}
+                title="Evidencia 13"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen14}
+                title="Evidencia 14"
+                color="#f9e79f"
+              />
+              <DetailCard
+                image={list[0].imagen15}
+                title="Evidencia 15"
+                color="#f9e79f"
+              />
             </div>
           ) : (
             <LoadingSpinner />

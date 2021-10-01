@@ -10,7 +10,7 @@ interface FoilCardStats {
 
 function FoilCard(props: FoilCardStats): JSX.Element {
   const [name, setName] = useState("");
-  
+
   const getName = async () => {
     let name = "";
     await db

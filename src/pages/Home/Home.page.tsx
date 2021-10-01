@@ -44,7 +44,6 @@ function Home(): JSX.Element {
     }[] = [];
 
     db.collection("folios")
-      //.where("correo", "==", cookies.get("email"))
       .onSnapshot((snapshot) => {
         var changes = snapshot.docChanges();
         changes.forEach((change) => {

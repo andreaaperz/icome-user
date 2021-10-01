@@ -17,24 +17,28 @@
   .DetailTitle {
     text-align: center;
     border-radius: 0.2rem;
-    background-color: orange;
-    height: 2rem;
+    height: 2.5rem;
+    padding: 0.1rem;
     margin-bottom: 0.5rem;
     color: black;
-    font-size: large;
+    font-weight: 400;
+    font-size: 22px;
+    box-shadow: 1px 1px 3px #828788;
   }
 
   .Download {
     margin: 1rem 30%;
-    background-color: white;
+    background-color: #d5dbdb;
     text-align: center;
-    border:1px solid black;
+    box-shadow: 1px 1px 5px #828788;
     border-radius: 0.2rem;
     height: 2.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
     cursor: pointer;
   }
 
-  .base64Image{
+  .base64Image {
     margin: auto;
     width: 100%;
     height: auto;
@@ -44,7 +48,6 @@
     color: black;
     text-decoration: none;
     vertical-align: middle;
-    margin-top: .1rem;
+    margin-top: 0.1rem;
   }
-
 }
