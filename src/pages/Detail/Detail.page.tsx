@@ -8,6 +8,7 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 interface arrayI {
   card1: any;
   card2: any;
+  card3: any;
   croquis: any;
   materiales: any;
   imagen1: any;
@@ -36,6 +37,7 @@ function Detail(): JSX.Element {
     const itemsArray: {
       card1: any;
       card2: any;
+      card3: any;
       croquis: any;
       materiales: any;
       imagen1: any;
@@ -64,6 +66,7 @@ function Detail(): JSX.Element {
             itemsArray.push({
               card1: change.doc.data().carta,
               card2: change.doc.data().carta2,
+              card3: change.doc.data().carta3,
               croquis: change.doc.data().croquis,
               materiales: change.doc.data().materiales,
               imagen1: change.doc.data().img1,
@@ -107,6 +110,11 @@ function Detail(): JSX.Element {
               <DetailCard
                 image={list[0].card2}
                 title="Carta 2"
+                color="#7dcea0"
+              />
+              <DetailCard
+                image={list[0].card3}
+                title="Carta 3"
                 color="#7dcea0"
               />
               <DetailCard
