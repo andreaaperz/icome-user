@@ -19,28 +19,13 @@ function Foils(): JSX.Element {
   let url = window.location.href;
   var id = url.substring(url.lastIndexOf("/") + 1);
 
-  const logout = (e: any) => {
-    e.preventDefault();
-
-    auth
-      .signOut()
-      .then(() => {
-        cookies.remove("email", { path: "/" });
-        cookies.remove("password", { path: "/" });
-        window.location.href = "./";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const getName = async () => {
     const itemsArray: {
       foil: string;
     }[] = [];
     await db
       .collection("folios")
-      .where("nombre", "==", id)
+      .where("email", "==", id)
       .get()
       .then((response) => {
         response.forEach((doc) => {
@@ -57,11 +42,10 @@ function Foils(): JSX.Element {
 
   useEffect(() => {
     if (!cookies.get("email")) {
-      window.location.href = "./";
+      window.location.href = "/";
     }
 
     console.log(getName());
-    console.log(list);
   }, []);
 
   let goDetail = (foil: any) => {
@@ -73,15 +57,6 @@ function Foils(): JSX.Element {
       <div>
         <Navbar bg="dark" variant="dark">
           <Container>
-            <img
-              alt=""
-              id="logout"
-              src={logoutImg}
-              width="27px"
-              height="27px"
-              className="d-inline-block align-top "
-              onClick={logout}
-            />
             <Navbar.Brand className="mx-auto">Mis Folios</Navbar.Brand>
           </Container>
         </Navbar>
@@ -93,15 +68,6 @@ function Foils(): JSX.Element {
       <div>
         <Navbar bg="dark" variant="dark">
           <Container>
-            <img
-              alt=""
-              id="logout"
-              src={logoutImg}
-              width="27px"
-              height="27px"
-              className="d-inline-block align-top "
-              onClick={logout}
-            />
             <Navbar.Brand className="mx-auto">Mis Folios</Navbar.Brand>
           </Container>
         </Navbar>

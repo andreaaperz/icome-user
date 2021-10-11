@@ -58,8 +58,8 @@ function Home(): JSX.Element {
     });
   }, []);
 
-  let goFoils = (name: any) => {
-    window.location.href = `./foils/${name}`;
+  let goFoils = (email: any) => {
+    window.location.href = `./foils/${email}`;
   };
 
   return (
@@ -85,7 +85,7 @@ function Home(): JSX.Element {
               <UserCard
                 key={index}
                 name={item.name}
-                onClick={() => goFoils(item.name)}
+                onClick={() => goFoils(item.email)}
               />
             ))
           ) : (
